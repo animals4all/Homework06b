@@ -21,9 +21,8 @@ class Melon(object):
         if self.weight <= 0:
             return self.melon_type
         else:
-            return "%s %0.2fLB %s" % (self.color, self.weight, self.melon_type)
-    
-
+            return "%s %0.2fLB %s" % (self.color, self.weight, self.melon_type)    
+        
 def help():
     print """
 shipping_procedure.py - Master Control Program for Automated Melon 
@@ -95,6 +94,10 @@ def main():
             
             # Prepare the melon
             m.prep()
+
+            # Paint the melon if necessary
+            if m.melon_type == "Winter Squash":
+                robots.painterbot.paint(m)
             
             # Evaluate the Melon
             presentable = robots.inspectorbot.evaluate(m)
